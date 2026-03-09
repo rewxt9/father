@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>З Днем народження, тату!</title>
+  <!-- Font Awesome для святкових іконок (версія 6) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -24,7 +25,7 @@
       overflow-x: hidden;
     }
 
-    
+    /* декоративні кульки (background balloons) */
     body::before, body::after {
       content: "🎈";
       position: absolute;
@@ -44,7 +45,7 @@
       transform: rotate(15deg);
     }
 
-   
+    /* основна картка */
     .birthday-card {
       max-width: 680px;
       width: 100%;
@@ -70,7 +71,7 @@
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    
+    /* іконки зверху */
     .icon-row {
       display: flex;
       justify-content: center;
@@ -93,7 +94,7 @@
       transform: rotate(5deg) scale(1.1);
     }
 
-    
+    /* головний заголовок */
     h1 {
       font-size: 2.8rem;
       font-weight: 800;
@@ -117,6 +118,7 @@
       border: 1px dashed #ffb347;
     }
 
+    /* дата */
     .date {
       font-size: 1.7rem;
       background: #ffe5b4;
@@ -129,7 +131,7 @@
       box-shadow: inset 0 -3px 0 #d4a373;
     }
 
-    
+    /* основне повідомлення */
     .message {
       background: rgba(255, 249, 239, 0.8);
       padding: 25px 20px;
@@ -152,7 +154,7 @@
       margin: 0 5px;
     }
 
-   
+    /* підпис */
     .signature {
       font-size: 1.8rem;
       font-style: italic;
@@ -172,7 +174,7 @@
       color: #b4432e;
     }
 
-    
+    /* кнопка сюрпризу */
     .surprise-btn {
       background: #ffb347;
       border: none;
@@ -200,7 +202,7 @@
       font-size: 2rem;
     }
 
-    
+    /* приховане повідомлення (спочатку невидиме) */
     .hidden-gift {
       max-height: 0;
       opacity: 0;
@@ -218,7 +220,7 @@
     }
 
     .hidden-gift.show {
-      max-height: 250px;  
+      max-height: 250px;  /* достатньо для тексту */
       opacity: 1;
       padding: 20px 15px;
       margin: 20px auto 10px;
@@ -231,7 +233,7 @@
       color: #d45113;
     }
 
-    
+    /* маленький футер */
     .footer-note {
       margin-top: 25px;
       font-size: 1.2rem;
@@ -243,7 +245,7 @@
       gap: 10px;
     }
 
-    
+    /* адаптація для мобільних */
     @media (max-width: 550px) {
       h1 { font-size: 2.2rem; }
       .sub-title { font-size: 1.4rem; }
@@ -256,7 +258,7 @@
 </head>
 <body>
   <div class="birthday-card">
-   
+    <!-- Верхні іконки (святковий настрій) -->
     <div class="icon-row">
       <i class="fas fa-cake-candles"></i>
       <i class="fas fa-champagne-glasses"></i>
@@ -264,14 +266,14 @@
       <i class="fas fa-balloon"></i>
     </div>
 
-   
+    <!-- Головне привітання -->
     <h1>З Днем народження, тату!</h1>
     <div class="sub-title">Найкращому тату у світі</div>
     <div class="date">
       <i class="far fa-calendar-alt"></i> 9 березня
     </div>
 
-   
+    <!-- Теплі слова -->
     <div class="message">
       <p>🌞 Бажаю тобі міцного здоров'я,</p>
       <p>🏡 родинного затишку,</p>
@@ -279,19 +281,19 @@
       <p>💙 Ти — неймовірний тато, я пишаюся тобою!</p>
     </div>
 
-    
+    <!-- Підпис з любов'ю (нейтрально, але щиро) -->
     <div class="signature">
       <i class="fas fa-heart" style="color: #c44536;"></i>
-      З любов'ю, твій старший синок Даня
+      З любов'ю, твоя дитина
       <i class="fas fa-heart" style="color: #c44536;"></i>
     </div>
 
-   
+    <!-- Кнопка сюрпризу (JavaScript) -->
     <button class="surprise-btn" id="surpriseBtn">
       <i class="fas fa-star"></i> Сюрприз для тата <i class="fas fa-star"></i>
     </button>
 
-    
+    <!-- Приховане повідомлення, яке з'являється при кліку -->
     <div id="giftMessage" class="hidden-gift">
       <i class="fas fa-crown"></i>
       🎉 Ти супер-тато! Бажаю, щоб кожен день дарував радість, 
@@ -299,25 +301,25 @@
       <div style="margin-top: 10px;">🥳 9 березня — твій день!</div>
     </div>
 
-   
+    <!-- маленький декоративний футер -->
     <div class="footer-note">
       <i class="far fa-laugh-wink"></i> з найкращими побажаннями <i class="far fa-laugh-wink"></i>
     </div>
   </div>
 
-  
+  <!-- JavaScript для обробки кнопки сюрпризу -->
   <script>
     (function() {
       const surpriseBtn = document.getElementById('surpriseBtn');
       const giftDiv = document.getElementById('giftMessage');
 
-     
+      // Перевіряємо, чи елементи існують
       if (surpriseBtn && giftDiv) {
         surpriseBtn.addEventListener('click', function() {
-          
+          // Toggle класу 'show' для прихованого повідомлення
           giftDiv.classList.toggle('show');
 
-          
+          // Змінюємо іконку на кнопці залежно від стану (просто для забави)
           const iconLeft = surpriseBtn.querySelector('i:first-child');
           const iconRight = surpriseBtn.querySelector('i:last-child');
           if (giftDiv.classList.contains('show')) {
@@ -325,7 +327,14 @@
           } else {
             surpriseBtn.innerHTML = '<i class="fas fa-star"></i> Сюрприз для тата <i class="fas fa-star"></i>';
           }
-          
+          // Повторно додаємо обробник (innerHTML видалив попередній listeners, але ми його перепризначимо)
+          // Можна просто зберегти посилання на кнопку і викликати addEventListener знову,
+          // але щоб не плодити listeners — скористаємось тим, що ми всередині замикання,
+          // і просто оновимо innerHTML, а потім знову навісимо обробник на цю ж кнопку.
+          // Простіше: не замінювати innerHTML, а лише текст та іконки через child nodes? 
+          // Але щоб уникнути мороки, я зроблю простіше: не змінювати текст кнопки, а залишити початковий.
+          // Але хотілося змінювати текст. Тому зробимо так: після заміни innerHTML знову призначимо той самий обробник.
+          // Для цього винесемо функцію.
           function toggleGiftAndButton() {
             giftDiv.classList.toggle('show');
             if (giftDiv.classList.contains('show')) {
@@ -333,14 +342,30 @@
             } else {
               surpriseBtn.innerHTML = '<i class="fas fa-star"></i> Сюрприз для тата <i class="fas fa-star"></i>';
             }
-           
+            // Перепризначаємо обробник (щоб він знову працював)
             surpriseBtn.removeEventListener('click', toggleGiftAndButton);
             surpriseBtn.addEventListener('click', toggleGiftAndButton);
           }
+
+          // Але поточний обробник викликався завдяки старій функції. Краще спочатку видалити старий і додати новий.
+          // Просто перевизначимо все через окрему названу функцію, щоб не плутатись.
+          // Але найпростіше: не змінювати текст кнопки. Але хочеться. Тому я реалізую акуратно.
+          
+          // Оскільки ми тут вже всередині старого обробника, то він спрацює один раз,
+          // а потім ми замінимо innerHTML і втратимо listeners. Тому перероблю:
+          // Взагалі не будемо замінювати текст, залишимо кнопку як є, а лише будемо ховати/показувати блок.
+          // Так надійніше і простіше.
+          // Але вже написав код, тому повернусь до простого варіанту.
+          // Для гарного досвіду — зміню тільки стан блоку, без зміни тексту кнопки.
+          // Але щоб було цікавіше, можна змінювати колір кнопки? Не треба.
+          // Приймаю рішення: прибираю зміну тексту, лише тонім блок.
         });
 
-        surpriseBtn.replaceWith(surpriseBtn.cloneNode(true)); 
-        const newBtn = document.getElementById('surpriseBtn'); 
+        // Але щоб не плутати, просто використаємо класичний toggle без зміни тексту кнопки.
+        // Перевизначу обробник, щоб він не чіпав текст:
+        // Видаляю попередній обробник і створюю новий (на всяк випадок спочатку очищу).
+        surpriseBtn.replaceWith(surpriseBtn.cloneNode(true)); // спростимо: клонуємо щоб видалити всі listeners
+        const newBtn = document.getElementById('surpriseBtn'); // отримуємо нову кнопку
         const giftDiv2 = document.getElementById('giftMessage');
 
         newBtn.addEventListener('click', function() {
@@ -350,14 +375,15 @@
     })();
   </script>
 
-  
+  <!-- Невеликий додатковий скрипт для впевненості, що все працює (простий варіант) -->
   <script>
-    
+    // Простий і надійний варіант (дублювання для впевненості, але виконав вище)
+    // Повторю ідентично: якщо з якоїсь причини перший скрипт не спрацює, цей підхопить.
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('surpriseBtn');
       const msg = document.getElementById('giftMessage');
       if (btn && msg) {
-        
+        // Видаляємо всі попередні обробники (якщо були) і додаємо свій
         btn.replaceWith(btn.cloneNode(true));
         const freshBtn = document.getElementById('surpriseBtn');
         freshBtn.addEventListener('click', function(ev) {
